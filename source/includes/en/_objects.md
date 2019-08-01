@@ -62,48 +62,6 @@ Parameter´s name|Parameter´s description| Data´s type
 verify_pin|PIN for [identification payment](#identification-payment) purposes|String, 4 digits
 allowed_card_token|Token for [identification payment](#identification-payment) purposes|String
 
-##bank_account
-Bank account´s information
-
-```json
-{
-    "prefix":"670100",
-    "account_number":"7654322",
-    "bank_code":"0100",
-    "account_name":"JAN NOVAK"
-}
-```
-Parameter´s name|Parameter´s description| Data´s type
----------------|---------------|-------
-iban|International bank account number|string, 50 characters
-bic|Business identification code (SWIFT)|string, 11 characters
-prefix|Bank account prefix|string, 64 characters
-account_number|Bank account number|string, 128 characters
-bank_code|Bank account code|string, 8 characters
-account_name|Bank account name|string, 70 characters
-
-##payment_card
-Payment card´s information
-
-```json
-{
-    "card_number":"444444******4448",
-    "card_expiration":"1909",
-    "card_brand":"VISA",
-    "card_issuer_country":"CZE",
-    "card_issuer_bank":"AIR BANK, A.S."
-}
-```
-Parameter´s name|Parameter´s description| Data´s type
----------------|---------------|-------
-card_number|Masked payment card´s number|string, 16 characters
-card_expiration|Expiration date|string, 4 characters
-card_brand|Payment card´s type|string, 50 characters
-card_issuer_country|Country code of issuing bank|string, 3 characters
-card_issuer_bank|Issuing bank|string, 80 characters
-card_token|Token for [identification payment](#identification-payment) purposes|string
-[3ds_result](#3ds-result)|3D Secure authorization's result for [identification payment](#identification-payment) purposes|string
-
 ##contact
 Customer´s information
 
@@ -145,7 +103,7 @@ Parameter´s name|Parameter´s description| Data´s type
 ---------------|---------------|-------
 type|Description of payee|string, set to ACCOUNT
 goid|Unique identifier of an e-shop in the payment gateway system|long
-email|E-mail (for purposes of [PSD2 API](#psd2-api) only)
+email|E-mail
 
 ##items
 Each item of the order

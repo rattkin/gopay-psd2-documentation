@@ -1,5 +1,5 @@
 ---
-title: GoPay REST API
+title: GoPay PSD2 API
 locale: cs
 toc_footers:
   - <a href='http://www.gopay.com'>Oficiální web GoPay</a>
@@ -12,12 +12,13 @@ search: true
 
 <%= partial "includes/languages" %>
 
-GoPay REST API je dostupné v testovacím prostředí na adrese ```https://gw.sandbox.gopay.com/api```.    
+<b>GoPay PSD2 API</b>
 
-Provozní API se nachází na adrese ```https://gate.gopay.cz/api```. 
+Implementace využívá komunikace pomocí REST API.
+
+`Testovací API` se nachází na adrese ```https://gw.sandbox.gopay.com/api```.    
+
+`Provozní API` se nachází na adrese ```https://gate.gopay.cz/api```. 
   
 Pro veškerou příchozí i odchozí komunikaci s API je použito kódování UTF-8.  
   
-Detailní popis jednotlivých kroků nutných pro provedení standardní integrace naleznete v [centru nápovědy](https://help.gopay.com/cs/s/i4).
-
-Pro testovací účely je možné využít [testovací scénář](https://help.gopay.com/cs/s/h1) (obsahuje mj. testovací čísla platebních karet).

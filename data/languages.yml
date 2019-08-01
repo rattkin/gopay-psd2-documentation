@@ -10,13 +10,11 @@
         DOSTUPNÉ METODY  
 
         [/oauth2/token](#přístupový-token)  
-        [/payments/payment](#založení-platby)  
-        [/payments/payment/{id}](#stav-platby)  
-        [/payments/payment/{id}/refund](#refundace-platby-(storno))  
-        [/payments/payment/{id}/create-recurrence](#opakování-platby-(na-vyžádání))   
-        [/payments/payment/{id}/void-recurrence](#zrušení-opakování-platby)  
-        [/payments/payment/{id}/void-authorization](#zrušení-předautorizace-platby)  
-        [/payments/payment/{id}/capture](#stržení-předautorizované-platby)  
+        [/wallets/{GoID}/wallet-info](#informace-o-osobnim-uctu)  
+        [/merchants/{EVC}/merchant-info](#informace-o-obchodnim-uctu)  
+        [/accounts/account/{EVC}/account-movements](#prehled-pohybu-na-uctu)  
+        [/wallet/payments/payment](#zalozeni-platby)  
+        [/wallet/payments/payment/{ID}/confirm](#potvrzeni-platby)  
 
     en: |
         API ENDPOINTS
@@ -27,176 +25,8 @@
         AVAILABLE METHODS  
 
         [/oauth2/token](#access-token)  
-        [/payments/payment](#establishment-of-payment)  
-        [/payments/payment/{id}](#status-of-the-payment)  
-        [/payments/payment/{id}/refund](#refund-of-the-payment-(cancelation))  
-        [/payments/payment/{id}/create-recurrence](#cancellation-of-the-recurring-payment)   
-        [/payments/payment/{id}/void-recurrence](#cancellation-of-the-recurring-payment)  
-        [/payments/payment/{id}/void-authorization](#cancellation-of-the-pre-authorized-payment)  
-        [/payments/payment/{id}/capture](#charge-of-pre-authorized-payment)  
-
-- language: php
-  syntax: php
-  info:
-    cs: |
-        PHP SDK
-
-        * GitHub: [`https://github.com/gopaycommunity/gopay-php-api`](https://github.com/gopaycommunity/gopay-php-api)
-        * Požadavky: `PHP >= 5.4.0`
-        * Stažení Composeru: [`https://getcomposer.org`](https://getcomposer.org)
-        * Instalace: **`composer require gopay/payments-sdk-php`**
-    en: |
-        PHP SDK
-
-        * GitHub: [`https://github.com/gopaycommunity/gopay-php-api`](https://github.com/gopaycommunity/gopay-php-api)
-        * Requirements: `PHP >= 5.4.0`
-        * Composer download: [`https://getcomposer.org`](https://getcomposer.org)
-        * Installation: **`composer require gopay/payments-sdk-php`**
-
-- language: python
-  syntax: python
-  info:
-    cs: |
-        Python SDK
-
-        * [https://github.com/gopaycommunity/gopay-python-api](https://github.com/gopaycommunity/gopay-python-api)
-        * Požadavky: `Python >= 2.6`
-        * Instalace: **`pip install gopay`**
-    en: |
-        Python SDK
-
-        * [https://github.com/gopaycommunity/gopay-python-api](https://github.com/gopaycommunity/gopay-python-api)
-        * Requirements: `Python >= 2.6`
-        * Installation: **`pip install gopay`**
-
-- language: iOS
-  syntax: objective_c
-  info:
-    cs: | 
-        iOS SDK
-        
-        * [https://github.com/gopaycommunity/gopay-iOS-api](https://github.com/gopaycommunity/gopay-iOS-api)
-        * Požadavky: `iOS SDK >= 7.0`
-        * Instalace: **`pod 'gopay-ios-api', :git => 'https://github.com/gopaycommunity/gopay-ios-api.git', :tag => '1.0.0'`**
-    en: |
-        iOS SDK
-        
-        * [https://github.com/gopaycommunity/gopay-iOS-api](https://github.com/gopaycommunity/gopay-iOS-api)
-        * Requirements: `iOS SDK >= 7.0`
-        * Installation: **`pod 'gopay-ios-api', :git => 'https://github.com/gopaycommunity/gopay-ios-api.git', :tag => '1.0.0'`**
-
-- language: java
-  syntax: java
-  info: 
-    cs: |
-        JAVA SDK
-
-        * [https://github.com/gopaycommunity/gopay-java-api](https://github.com/gopaycommunity/gopay-java-api)
-        * Požadavky : `JAVA >= 7.0`
-        * Instalace :   
-                    **`git clone https://github.com/gopaycommunity/gopay-java-api.git`**  
-                    **`cd gopay-java-api`**  
-                    **`mvn package `**  
-  
-        * **`Všechny artefakty se nacházejí v centrálním repozitáři mavenu`**  
-        [http://mvnrepository.com/artifact/cz.gopay](http://mvnrepository.com/artifact/cz.gopay)
-  
-        * **`Pokud Vám nevyhovuje HTTP Client, tak je možné z api použít další dva frameworky:`**  
-            * ``Resteasy``  
-            * ``Apache CXF``  
-  
-        **`Více informací o integraci těchto frameworků naleznete na našem githubu`**
-    en: |
-        JAVA SDK
-
-        * [https://github.com/gopaycommunity/gopay-java-api](https://github.com/gopaycommunity/gopay-java-api)
-        * Requirements : `JAVA >= 7.0`
-        * Installation :   
-                    **`git clone https://github.com/gopaycommunity/gopay-java-api.git`**
-                    **`cd gopay-java-api`**  
-                    **`mvn package `**  
-  
-        * **`All artifacts are located in the maven central repository.`**  
-        [http://mvnrepository.com/artifact/cz.gopay](http://mvnrepository.com/artifact/cz.gopay)    
-  
-        * **`If Apache HTTP Client does not suit you, the api supports two frameworks:`**  
-            * ``Resteasy``  
-            * ``Apache CXF``  
-  
-        **`More info about frameworks integration can be found on our github`**
-
-- language: android
-  syntax: javascript
-  info: 
-    cs: |
-        ANDROID API
-
-        * [https://github.com/gopaycommunity/gopay-android-api](https://github.com/gopaycommunity/gopay-android-api)
-        * Požadavky : `Android studio/Gradle`
-        * Instalace :   
-                    **`git clone https://github.com/gopaycommunity/gopay-android-api.git`**  
-                    **`cd gopay-android-api`**  
-                    **`gradle clean build`**  
-  
-        * `Všechny artefakty se nacházejí v centrálním repozitáři maven jcenter`  
-  
-        * `model classes, connector`  
-                    **`compile 'cz.gopay:androidapi:1.0.1'`**  
-        * `webview (v případě, že budete chtít využívat naše webview, registrujte jeho aktivitu v manifestu vaší Android aplikace)`  
-                    **`compile 'cz.gopay:androidui:1.0.1'`**  
-    en: |
-        ANDROID API
-
-        * [https://github.com/gopaycommunity/gopay-android-api](https://github.com/gopaycommunity/gopay-android-api)
-        * Requirements : `Android studio/Gradle`
-        * Installation :   
-                    **`git clone https://github.com/gopaycommunity/gopay-android-api.git`**  
-                    **`cd gopay-android-api`**  
-                    **`gradle clean build`**  
-  
-        * `Artifacts are located in the maven jcenter repository`  
-  
-        * `model classes, connector`  
-                    **`compile 'cz.gopay:androidapi:1.0.1'`**  
-        * `webview (in a case you would like to use our module gopay-ui register its activity into your android application manifest)`  
-                    **`compile 'cz.gopay:androidui:1.0.1'`**  
-
-- language: .NET
-  syntax: csharp
-  info: 
-    cs: |
-        .NET API
-
-        * [https://github.com/gopaycommunity/gopay-dotnet-api](https://github.com/gopaycommunity/gopay-dotnet-api)
-        * Požadavky : `.NET 4.0+`
-        * `NuGet`  
-                    **`PM> Install-Package GOPAY.NET`**  
-        * `Závislosti`  
-                    **`Newtonsoft.Json`**  
-                    **`Restsharp`**  
-                    **`Restsharp.Newtonsoft.Json`**  
-        * `Namespace`  
-                    **`using GoPay.Common;`**  
-                    **`using GoPay.Model;`**  
-                    **`using GoPay.Payment;`**  
-                    **`using GoPay.Model.Payments;`**  
-                    **`using GoPay.EETProp;`**  
-                    **`using GoPay.Account;`**  
-    en: |
-        .NET API
-
-        * [https://github.com/gopaycommunity/gopay-dotnet-api](https://github.com/gopaycommunity/gopay-dotnet-api)
-        * Requirements : `.NET 4.0+`
-        * `NuGet`  
-                    **`PM> Install-Package GOPAY.NET`**  
-        * `Dependencies`  
-                    **`Newtonsoft.Json`**  
-                    **`Restsharp`**  
-                    **`Restsharp.Newtonsoft.Json`**  
-        * `Namespace`  
-                    **`using GoPay.Common;`**  
-                    **`using GoPay.Model;`**  
-                    **`using GoPay.Payment;`**  
-                    **`using GoPay.Model.Payments;`**  
-                    **`using GoPay.EETProp;`**  
-                    **`using GoPay.Account;`**  
+        [/wallets/{GoID}/wallet-info](#personal-account-s-information)  
+        [/merchants/{EVC}/merchant-info](#merchant-account-s-information)  
+        [/accounts/account/{EVC}/account-movements](#account-movements)  
+        [/wallet/payments/payment](#create-of-payment)  
+        [/wallet/payments/payment/{ID}/confirm](#confirmation-of-the-payment)  
