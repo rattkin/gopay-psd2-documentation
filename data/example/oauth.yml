@@ -1,0 +1,113 @@
+
+request:
+    shell: |
+        curl -v -N https://gw.sandbox.gopay.com/api/oauth2/token \
+        -X "POST" \
+        -H "Accept: application/json" \
+        -H "Content-Type: application/x-www-form-urlencoded" \
+        -u "<ClientID>:<ClientSecret>" \
+        -d "grant_type=client_credentials&scope=payment-create"
+    php:
+        cs: |
+            <?php
+            $gopay = GoPay\payments([
+                'goid' => '8123456789',
+                'clientId' => '...',
+                'clientSecret' => '...',
+                'isProductionMode' => false,
+                'scope' => GoPay\Definition\TokenScope::ALL,
+                'language' => GoPay\Definition\Language::CZECH,
+                'timeout' => 30
+            ]);
+            // token získá SDK interně, není třeba volat žádnou metodu pro získání tokenu
+        en: |
+            <?php
+            $gopay = GoPay\payments([
+                'goid' => '...',
+                'clientId' => '...',
+                'clientSecret' => '...',
+                'isProductionMode' => false,
+                'scope' => GoPay\Definition\TokenScope::ALL,
+                'language' => GoPay\Definition\Language::ENGLISH,
+                'timeout' => 30
+            ]);
+            // token is retrieved automatically, you don't have to call some method `getToken`
+    python:
+        cs: |
+            import gopay
+
+            api = gopay.payments({
+                'goid': '8302931681',
+                'clientId': '1061399163',
+                'clientSecret': 'stDTmVXF',
+                'isProductionMode': False,
+                'scope': gopay.TokenScope.ALL,
+                'language': gopay.Language.CZECH,
+                'timeout': 30
+            })
+            # token získá SDK interně, není třeba volat žádnou metodu pro získání tokenu
+        en: |
+            import gopay
+
+            api = gopay.payments({
+                'goid': '8302931681',
+                'clientId': '1061399163',
+                'clientSecret': 'stDTmVXF',
+                'isProductionMode': False,
+                'scope': gopay.TokenScope.ALL,
+                'language': gopay.Language.ENGLISH,
+                'timeout': 30
+            })
+            # token is retrieved automatically, you don't have to call some method `get_token`
+    objective_c:
+        cs: |
+            #import <GPAPI.h>
+            [[GPAPI sharedAPI] setClientID:@"..." clientSecret:@"..." productionMode:NO];
+            // token získá SDK interně, není třeba volat žádnou metodu pro získání tokenu
+            // vhodne volat napriklad v - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions v AppDelegate
+        en: |
+            #import <GPAPI.h>
+            [[GPAPI sharedAPI] setClientID:@"..." clientSecret:@"..." productionMode:NO];
+            // token is retrieved automatically, you don't have to call some method `getToken`
+            // For example you can call this in - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions v AppDelegate
+    java:
+        cs: |
+            IGPConnector connector = HttpClientGPConnector.build(<API_URL>);
+            connector.getAppToken(<CLIENT_ID>,<CLIENT_CREDENTIALS>); 
+            // API_URL pro testovací server - https://gw.sandbox.gopay.com/api
+            // API_URL pro provozní server - https://gate.gopay.cz/api
+        en: |
+            IGPConnector connector = HttpClientGPConnector.build(<API_URL>);
+            connector.getAppToken(<CLIENT_ID>,<CLIENT_CREDENTIALS>); 
+            // API_URL for sandbox - https://gw.sandbox.gopay.com/api
+            // API_URL for production mode - https://gate.gopay.cz/api
+    javascript: |
+            IGPConnector connector = GPAndroidConnector.build(<API_URL>);
+            connector.getAppToken(<CLIENT_ID>,<CLIENT_CREDENTIALS>);
+    csharp: |
+            var connector = new GPConnector(<API_URL>,<USER_ID>, <USER_SECRET>);
+            connector.GetAppToken();   
+
+response:
+    json: |
+        {
+            "token_type":"bearer",
+            "access_token":"AAAnu3YnAHRk298EsmyttFQMcbCcvmwTKK5hrJx2aGG8ZnFyBJhAvFWNmbWVSD7p",
+            "expires_in":1800
+        }
+    php:
+        cs: |
+            <?php
+            // informace o cacheování access tokenů:
+            // https://github.com/gopaycommunity/payments-sdk-php#cache-access-token
+        en: |
+            <?php
+            // information about caching access tokens:
+            // https://github.com/gopaycommunity/payments-sdk-php#cache-access-token
+    python:
+        cs: |
+            # informace o cacheování access tokenů:
+            # https://github.com/gopaycommunity/payments-sdk-php#cache-access-token
+        en: |
+            # information about caching access tokens:
+            # https://github.com/gopaycommunity/payments-sdk-php#cache-access-token

@@ -1,0 +1,9 @@
+## Evidence tržeb (EET)
+
+Pokud využíváte <b>variantu B</b> pro funkcionalitu elektronické evidence tržeb (EET), viz popis varianty uvedený v [centru nápovědy](https://help.gopay.com/cs/s/vX), skrze platební bránu GoPay, je pro správnou funkcionalitu <b>nutné</b> na platební bránu odesílat specifické požadavky pracující s EET parametry popisované níže.
+
+<aside class='warning'>Pokud v GoPay obchodním účtu nastavíte EET variantu B a neprovedete změnu integrace (viz specifické požadavky níže), nebude možné od data aktivace (v nastavení provozovny) vytvářet platby.</aside>
+
+Požadavky funkce EET zpravidla vychází ze standardních požadavků, např. požadavek založení [standardní platby](#standardni-platba), jsou však rozšířeny o objekt [eet](#eet), který předává podstatná EET data. Ty jsou následně promítnuty na portál Finanční správy ČR.
+
+Požadavky, které se od standardních operací zásadně liší, případně jsou pro funkci EET zcela nové, jsou popsány níže.

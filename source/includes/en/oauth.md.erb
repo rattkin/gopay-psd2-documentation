@@ -1,0 +1,55 @@
+# Authentication
+
+GoPay uses REST API for authorization of the access to API principal OAuth2.0,
+in specific method of client authentication, see [http://tools.ietf.org/html/rfc6749#section-4.4](http://tools.ietf.org/html/rfc6749#section-4.4)
+
+## Access token
+
+The basic element of all communication via REST API is an access token that is created by using the access data in the form of ```<ClientID>```:```<ClientSecret>```. 
+A token is set as an authorization parameter in HTTP request header through ```Authorization: Bearer <Access-Token>```. This token is set for every requirement for API. 
+Token expires after 30 minutes. After expiry of the token, it is necessary to create a new access token.
+<aside class="notice">
+If you do not have ClientID and ClientSecret, please, make your <a href="https://help.gopay.com/en/s/bu" target="_blank"><font color="black">registration</font></a>.
+</aside>
+
+
+<h5>Request</h5>
+
+```POST /api/oauth2/token```
+
+> Request
+
+<%= partial "includes/examples", :locals => { :example => data.example.oauth.request } %>
+
+<h5>Header of the request</h5>
+Parameter's name|Parameter's description|Required
+---------------|---------------|-------
+Accept|application/json|YES
+Content-Type|application/x-www-form-urlencoded|YES
+Authorization|HTTP authorization which is set as ```<ClientID>```:```<ClientSecret>```|YES
+
+<h5>Body of the request</h5>
+
+Parameter's name|Parameter's description|Required
+---------------|---------------|-------
+[scope](#scope)|Defines a category of functionalities that can operate a given action|YES
+grant_type|client_credentials|YES
+
+> Response
+
+<%= partial "includes/examples", :locals => { :example => data.example.oauth.response } %>
+
+
+<h5>Response</h5>
+
+Parameter's name|Parameter's description|Required
+---------------|---------------|-------
+token_type|bearer|YES
+access_token|Access token|YES
+expires_in|Token expiry time in seconds|YES
+
+<aside class="notice">
+Access token for the scope payment-create is intended exclusively to establish the payment. Other functions, 
+such as query about the status of payment, refund of payment, must be accompanied by a token, which is intended for 
+servicing operations connected with payments (scope payment-all).
+</aside>

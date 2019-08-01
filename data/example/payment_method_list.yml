@@ -1,0 +1,57 @@
+
+
+request:
+    shell: |
+        curl -v -N https://gw.sandbox.gopay.com/api/eshops/eshop/8123456789/payment-instruments/CZK \
+        -X "GET" \
+        -H "Accept: application/json" \
+        -H "Authorization: Bearer AAArt6RuTM69kX6UUGZ6p9hyMPrTUVXmMDdkC4BNnQvQcbNyUTvQtCv45R969"
+
+response:
+    json: |
+        {
+        "groups":{
+            "card-payment":{
+                "label":{
+                    "cs":"Platební karta"}
+                },
+            "bank-transfer":{
+                "label":{
+                    "cs":"Rychlý bankovní převod"}
+                },
+            "wallet":{
+                "label":{
+                    "cs":"Elektronické peněženky"}
+                },
+            "others":{
+                "label":{
+                    "cs":"Ostatní"}
+                }
+            },
+        "enabledPaymentInstruments":[{
+            "paymentInstrument":"PAYMENT_CARD",
+                "label":{
+                    "cs":"Platební karta"
+                },
+                "image":{
+                    "normal":"https://gate.gopay.cz/images/checkout/payment_card.png",
+                    "large":"https://gate.gopay.cz/images/checkout/payment_card@2x.png"},
+                "group":"card-payment",
+                "enabledSwifts":null
+                },
+            {"paymentInstrument":"BANK_ACCOUNT",
+                "label":{
+                    "cs":"Rychlý bankovní převod"},
+                "image":{
+                    "normal":"https://gate.gopay.cz/images/checkout/bank_account.png",
+                    "large":"https://gate.gopay.cz/images/checkout/bank_account@2x.png"},
+                "group":"bank-transfer",
+                "enabledSwifts":[{
+                    "swift":"GIBACZPX",
+                        "label":{"cs":"Platba 24"},
+                        "image":{
+                            "normal":"https://gate.gopay.cz/images/checkout/GIBACZPX.png",
+                            "large":"https://gate.gopay.cz/images/checkout/GIBACZPX@2x.png"},
+                        "isOnline":true},
+            ...]},
+        ]}

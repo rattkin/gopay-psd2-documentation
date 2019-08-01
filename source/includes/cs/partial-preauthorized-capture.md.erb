@@ -1,0 +1,54 @@
+###Částečné stržení předautorizované platby
+Pomocí volání je možné strhnout pouze určitou část předautorizace finančních prostředků dříve vytvořené
+[předautorizované platby](#predautorizovana-platba). Zbylé prostředky jsou zákazníkovi uvolněny zpět na platební kartu.
+
+Požadovaná částka stržení nesmí být vyšší než původní částka předautorizované platby.
+   
+Podrobné informace k částečnému stržení předautorizované platby naleznete v [centru nápovědy](https://help.gopay.com/cs/s/xF).
+
+<b>EET</b>
+
+Pro potřeby [EET](#evidence-trzeb-eet) je požadavek založení platby rozšířený o objekt [eet](#eet).
+
+Původní EET data předautorizované platby jsou přepsána novým objektem ```eet``` předaným ve volání částečného stržení předautorizované platby.
+
+
+
+<aside class="notice">
+  Pro aktivaci funkce částečného stržení předautorizovaných plateb je nutné <a href="mailto:integrace@gopay.cz?subject=GoPay - částečné stržení předautorizované platby"><font color="black">kontaktovat</font></a> technickou podporu GoPay. 
+</aside>
+
+> Request
+
+<%= partial "includes/examples", :locals => { :example => data.example.partial_preauthorized_capture.request } %>
+
+<h5>Request</h5>
+
+```POST /api/payments/payment/{id}/capture```
+
+<h5>Hlavička požadavku</h5>
+
+Název parametru | Popis parametru | Povinný
+----------------|-----------------|--------
+Accept|application/json|ANO
+Content-Type|application/json|ANO
+Authorization|Bearer [```<access-token>```](#pristupovy-token)|ANO
+
+<h5>Tělo požadavku</h5>
+
+Název parametru|Popis parametru|Povinný| Datový typ
+---------------|---------------|-------|-------
+amount|Požadovaná částka stržení v haléřích|ANO|long > 0
+[items](#items)|Detailně rozepsané jednotlivé položky objednávky|ANO| Objekt
+[eet](#eet)|EET údaje (povinné pro funkci [EET](#evidence-trzeb-eet))|NE|Objekt
+
+> Response
+
+<%= partial "includes/examples", :locals => { :example => data.example.partial_preauthorized_capture.response } %>
+
+<h5>Response</h5>
+
+Název parametru|Popis parametru|Datový typ
+---------------|---------------|----------
+id|ID platby|long
+[result](#result)|Objekt popisující stav požadavku| Objekt

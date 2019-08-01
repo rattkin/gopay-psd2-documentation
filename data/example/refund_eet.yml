@@ -1,0 +1,57 @@
+
+request:
+    shell: |
+        curl -v -N https://gw.sandbox.gopay.com/api/payments/payment/3000006620/refund \
+        -X "POST" \
+        -H "Accept: application/json" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer AAArt6RuTM69kX6UUGZ6p9hyMPrTUVXmMDdkC4BNnQvQcbNyUTvQtCv45R969" \
+        -d '{
+            "amount":119990,
+            "items":[
+                {
+                    "type":"ITEM", 
+                    "name":"lodicky",
+                    "product_url":"https://www.eshop.cz/boty/damske/lodicky-cervene", 
+                    "ean":1234567890123,
+                    "amount":-119990,
+                    "count":1,
+                    "vat_rate":21
+                }],
+            "eet":{
+                    "celk_trzba":-119990,
+                    "zakl_dan1":-99160,
+                    "dan1":-20830,
+                    "mena":"CZK"
+                }
+            }'
+    php: |
+        <?php
+            use GoPay\Definition\Payment\VatRate;
+            use GoPay\Definition\Payment\PaymentItemType;
+            
+            $response = $gopay->refundPayment(3000006620, [
+            'amount' => 119990,
+            'items' => [
+                    [
+                            'type' => PaymentItemType::ITEM,
+                            'name' => 'lodicky',
+                            'product_url' => 'https://www.eshop.cz/boty/damske/lodicky-cervene',
+                            'ean' => 1234567890123,
+                            'amount' => -119990,
+                            'count' => 1,
+                            'vat_rate' => VatRate::RATE_4
+                    ]],
+            'eet' => [
+                    'celk_trzba' => -119990,
+                    'zakl_dan1' => -99160,
+                    'dan1' => -20830,
+                    'mena' => Currency::CZECH_CROWNS
+            ]
+        ]);
+response:
+    json: |
+        {
+         "id":3000006620,
+         "result":"FINISHED"
+        }

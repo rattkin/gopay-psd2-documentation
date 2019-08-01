@@ -1,0 +1,288 @@
+
+request:
+    shell: |
+        curl -v -N https://gw.sandbox.gopay.com/api/payments/payment \
+        -X "POST" \
+        -H "Accept: application/json" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer xzZnu3YnAHRk298EsmyttFQMcbCcvmwTKK5hrJx2aGG8ZnFyBJhAvFWNmbWVSD7p" \
+        -d '{
+              "payer": {
+                "contact":{"first_name":"Zbynek",
+                           "last_name":"Zak",
+                           "email":"test@test.cz",
+                           "phone_number":"+420777456123",
+                           "city":"C.Budejovice",
+                           "street":"Plana 67",
+                           "postal_code":"373 01",
+                           "country_code":"CZE"
+                          }
+              },
+              "target":{"type":"ACCOUNT",
+                         "goid":"8123456789"
+                       },
+              "amount":"1000",
+              "currency":"CZK",
+              "order_number":"001",
+              "order_description":"objednavka01",
+              "items": [{
+                        "type":"ITEM", 
+                        "name":"obuv",
+                        "product_url":"https://www.eshop.cz/boty/lodicky", 
+                        "ean":1234567890123,
+                        "amount":700,
+                        "count":1,
+                        "vat_rate":21
+                      }, 
+                      {
+                        "type":"ITEM", 
+                        "name":"oprava podpatku",
+                        "product_url":"https://www.eshop.cz/boty/opravy", 
+                        "ean":1234567890189,
+                        "amount":300,
+                        "count":1,
+                        "vat_rate":15
+                      }],
+              "recurrence":{"recurrence_cycle":"DAY",
+                            "recurrence_period":"7",
+                            "recurrence_date_to":"2015-12-31"},
+              "additional_params":[{"name":"invoicenumber",
+                                    "value":"2015001003"
+                                  }],
+              "callback":{
+                          "return_url":"http://www.eshop.cz/return",
+                          "notification_url":"http://www.eshop.cz/notify"
+                         }
+        }'
+    php: |
+        <?php
+        use GoPay\Definition\Payment\Currency;
+        use GoPay\Definition\Payment\PaymentInstrument;
+        use GoPay\Definition\Payment\BankSwiftCode;
+        use GoPay\Definition\Payment\Recurrence;
+
+        $response = $gopay->createPayment([
+            'payer' => [
+                'contact' => [
+                    'first_name' => 'Zbynek',
+                    'last_name' => 'Zak',
+                    'email' => 'test@test.cz',
+                    'phone_number' => '+420777456123',
+                    'city' => 'C.Budejovice',
+                    'street' => 'Plana 67',
+                    'postal_code' => '373 01',
+                    'country_code' => 'CZE',
+                ],
+            ],
+            'amount' => 1000,
+            'currency' => Currency::CZECH_CROWNS,
+            'order_number' => '001',
+            'order_description' => 'objednavka01',
+            'items' => [
+                        [
+                         'type' => 'ITEM', 
+                         'name' => 'obuv',
+                         'product_url' => 'https://www.eshop.cz/boty/lodicky', 
+                         'ean' => 1234567890123,
+                         'amount' => 700,
+                         'count' => 1,
+                         'vat_rate' => VatRate::RATE_4
+                        ], 
+                        [
+                         'type' => 'ITEM', 
+                         'name' => 'oprava podpatku',
+                         'product_url' => 'https://www.eshop.cz/boty/opravy', 
+                         'ean' => 1234567890189,
+                         'amount' => 300,
+                         'count' => 1,
+                         'vat_rate' => VatRate::RATE_3
+                        ],
+            ],
+            'recurrence' => [
+                'recurrence_cycle' => Recurrence::DAILY,
+                'recurrence_period' => "7",
+                'recurrence_date_to' => '2015-12-31'
+            ],
+            'additional_params' => [
+                array('name' => 'invoicenumber', 'value' => '2015001003')
+            ],
+            'callback' => [
+                'return_url' => 'http://www.your-url.tld/return',
+                'notification_url' => 'http://www.your-url.tld/notify'
+            ]
+        ]);
+    python: |
+        from gopay.enums import PaymentInstrument, BankSwiftCode, Currency, Recurrence
+
+        response = api.create_payment({
+            'payer': {
+                'contact': {
+                    'first_name': 'Zbynek',
+                    'last_name': 'Zak',
+                    'email': 'test@test.cz',
+                    'phone_number': '+420777456123',
+                    'city': 'C.Budejovice',
+                    'street': 'Plana 67',
+                    'postal_code': '373 01',
+                    'country_code': 'CZE',
+                },
+            },
+            'amount': 150,
+            'currency': Currency.CZECH_CROWNS,
+            'order_number': '001',
+            'order_description': 'pojisteni01',
+            'items': [
+                {'name': 'item01', 'amount': 50},
+                {'name': 'item02', 'amount': 100},
+            ],
+            'recurrence': {
+                'recurrence_cycle': Recurrence.DAILY,
+                'recurrence_period': "7",
+                'recurrence_date_to': '2015-12-31'
+            },
+            'additional_params': [
+                {'name': 'invoicenumber', 'value': '2015001003'}
+            ],
+            'callback': {
+                'return_url': 'http://www.your-url.tld/return',
+                'notification_url': 'http://www.your-url.tld/notify'
+            }
+        })
+    objective_c: |
+        GPPaymentRequest *payment = [[GPPaymentRequest alloc] init];
+        payment.amount = 20;
+        payment.currency = @"CZK";
+        payment.order_number = @"001";
+        payment.order_description = @"test";
+            
+        GPPayer *payer = [[GPPayer alloc] init];
+        payer.allowed_payment_instruments = @[];
+        payer.default_payment_instrument = @"PAYMENT_CARD";
+        payer.contact.first_name = @"Zbynek";
+        payer.contact.last_name = @"Zak";
+        payer.contact.email = @"test@test.cz";
+        payer.contact.phone_number = @"+420777456123";
+        payer.contact.city = @"C.Budejovice";
+        payer.contact.street = @"Plana 67";
+        payer.contact.postal_code = @"370 01";
+        payer.contact.country_code = @"CZE";
+            
+        payment.payer = payer;
+            
+        GPTarget *target = [[GPTarget alloc] init];
+        target.type = PAY_TARGET_ACCOUNT;
+        target.goid = @"8035442195";
+            
+        payment.target = target;
+
+        payment.recurrence = [[PaymentRecurrence alloc] init];
+        payment.recurrence.recurrence_cycle = RECCURENCE_CYCLE_DAY;
+        payment.recurrence.recurrence_period = 7;
+        payment.recurrence.recurrence_date_to = @"2015-12-31";
+
+        [GPAPI sharedAPI] createPayment:payment withHandleSuccess:^(GPPayment *payment) {
+                
+        } failure:^(NSError *error) {
+                
+        }];
+    java: |
+        BasePayment payment = PaymentFactory.createBasePaymentBuilder()
+            .order(<ORDER_NUMBER>, <AMOUNT>, Currency.EUR, <DESCRIPTION>)
+            .addItem(<ITEM_NAME>, <AMOUNT>, <FEE>, <COUNT>)
+            .addAdditionalParameter(<Key>, <VALUE>)
+            .withCallback(<RETURN_URL>, <NOTIFY_URL>)
+            .payer(<Payer>)
+            .inLang(Lang.EN)
+            .toEshop(<GO_ID>)
+            .build();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, 2016);
+        calendar.set(Calendar.MONTH, 2);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        Recurrence r = Recurrence.build(calendar.getTime())
+            .withTimeInterval(RecurrenceCycle.WEEK, 1)
+            .inState(Recurrence.RecurrenceState.STARTED);
+        
+        payment.setRecurrence(r);
+
+        try {
+            connector.createPayment(payment);
+        } catch {GPClientException e) {
+             for (ErrorElement err : e.getError().getErrorMessages()) {
+                int code = err.getErrorCode();
+                String message = err.getMessage();
+                String field = err.getField();
+            }
+        }
+    javascript: |
+      Calendar calendar = Calendar.getInstance();
+      calendar.set(Calendar.YEAR, 2016);
+      calendar.set(Calendar.MONTH, 2);
+      calendar.set(Calendar.DAY_OF_MONTH, 1);
+      Recurrence r = Recurrence.build(calendar.getTime())
+        .withTimeInterval(RecurrenceCycle.WEEK, 1)
+        .inState(Recurrence.RecurrenceState.STARTED);
+      payment.setRecurrence(r);
+
+      try {
+        connector.createPayment(payment);
+      } catch {GPClientException e) {
+        //
+      }
+    csharp: |
+      var recurrence = new Recurrence() 
+      {
+      Cycle = RecurrenceCycle.DAY,
+      DateTo = new DateTime(2020, 12, 12),
+      Period = 5
+      };
+      var payment = new BasePayment();
+      payment.Recurrence = recurrence;
+      
+      try {
+        connector.CreatePayment(payment);
+      } catch {GPClientException e) {
+      //
+      }
+
+response:
+    json: |
+        {
+          "id":3000006542,
+          "order_number":"001",
+          "state":"CREATED",
+          "amount":1000,"currency":"CZK",
+          "payer":{
+                   "contact":{"first_name":"Zbynek",
+                              "last_name":"Zak",
+                              "email":" test@test.cz",
+                              "phone_number":"+420777456123",
+                              "city":"C.Budejovice",
+                              "street":"Plana 67",
+                              "postal_code":"37301",
+                              "country_code":"CZE"
+                            }
+                  },
+            "target":{"type":"ACCOUNT","goid":8123456789},
+            "recurrence":{"recurrence_cycle":"DAY",
+                          "recurrence_period":7,
+                          "recurrence_date_to":"2015-12-31",
+                          "recurrence_state":"REQUESTED"
+                        },
+            "additional_params":[{"name":"invoicenumber",
+                                  "value":"2015001003"
+                                }],
+            "lang":"_LOCALE_",
+            "gw_url":" https://gw.sandbox.gopay.com/gw/v3/bCcvmwTKK5hrJx2aGG8ZnFyBJhAvF "
+        }
+    php: |
+        <?php
+        if ($response->hasSucceed()) {
+            $url = $response->json['gw_url'];
+            echo $response;
+        }
+    python: |
+        if response.has_succeed():
+            url = response.json['gw_url']
+            print(response)

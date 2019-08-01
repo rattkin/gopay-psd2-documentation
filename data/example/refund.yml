@@ -1,0 +1,56 @@
+
+request:
+    shell: |
+        curl -v -N https://gw.sandbox.gopay.com/api/payments/payment/3000006620/refund \
+        -X "POST" \
+        -H "Accept: application/json" \
+        -H "Content-Type:application/x-www-form-urlencoded" \
+        -H "Authorization: Bearer AAArt6RuTM69kX6UUGZ6p9hyMPrTUVXmMDdkC4BNnQvQcbNyUTvQtCv45R969" \
+        -d "amount=1000"
+    php: |
+        <?php
+        $response = $gopay->refundPayment(3000006620, 1000);
+    python: |
+        response = api.refund_payment(3000006620, 1000)
+    objective_c: |
+        [[GPAPI sharedAPI] refundPaymentWithID:3000006620 amount:10000 withHandleSuccess:^(GPAPIResult result) {
+        } failure:^(NSError *error) {
+
+        }];
+    java: |
+        try {
+            PaymentResult result = connector.refundPayment(<PAYMENT_ID>, <AMOUNT>);
+        } catch (GPClientException e) {
+             for (ErrorElement err : e.getError().getErrorMessages()) {
+                int code = err.getErrorCode();
+                String message = err.getMessage();
+                String field = err.getField();
+            }              
+        }
+    javascript: |
+        try {
+            PaymentResult result = connector.refundPayment(<PAYMENT_ID>, <AMOUNT>);
+        } catch (GPClientException e) {
+            //
+        }
+    csharp: |
+        try {
+            var result = connector.RefundPayment(<PAYMENT_ID>, <AMOUNT>);
+        } catch (GPClientException e) {
+        //
+        }
+        
+response:
+    json: |
+        {
+         "id":3000006620,
+         "result":"FINISHED"
+        }
+    php: |
+        <?php
+        if ($response->hasSucceed()) {
+            echo $response;
+        }
+    python: |
+        if response.has_succeed():
+            print(response)

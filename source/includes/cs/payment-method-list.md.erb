@@ -1,0 +1,39 @@
+# Platební metody
+
+S platebními metodami je možné provádět dodatečné operace, např. získat seznam aktuálně povolených platebních metod,
+které lze promítnout zákazníkům na e-shopu při výběru platební metody.
+
+<aside class='notice'>
+  Doporučené způsoby rozdělení platebních metod v košíku vašeho e-shopu naleznete v našem <a href="https://help.gopay.com/cs/s/t4"><font color="black">centru nápovědy</font></a>.
+</aside>
+
+##Povolené platební metody
+
+Metoda vrací ```JSON``` strukturu všech povolených platebních metod na eshopovém profilu.
+V URL požadavku je nutné předat GoID dotazovaného eshopu a kód měny.
+
+> Request
+
+<%= partial "includes/examples", :locals => { :example => data.example.payment_method_list.request } %>
+
+<h5>Request</h5>
+
+```GET /api/eshops/eshop/{GoID}/payment-instruments/{currency}```
+
+<h5>Hlavička požadavku</h5>
+
+Název parametru|Popis parametru|Povinný
+---------------|---------------|-------
+Accept|application/json|ANO
+Authorization| Bearer [```<access-token>```](#pristupovy-token)|ANO
+
+> Response
+
+<%= partial "includes/examples", :locals => { :example => data.example.payment_method_list.response } %>
+
+<h5>Response</h5>
+
+Název parametru|Popis parametru
+---------------|---------------
+[groups](#groups)| Definice skupin platebních metod
+[enabledPaymentInstruments](#enabledpaymentinstruments)| Objekt obsahující platební metody povolené na eshopovém profilu

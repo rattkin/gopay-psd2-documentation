@@ -1,0 +1,33 @@
+###Cancellation of recurring
+
+The functionality allows you to cancel recurrence of previously created payment [created payment](#recurring-payment). 
+The user has the same opportunity as logged into GoPay​ account.
+   
+More information about recurring payments you can find in [help center](https://help.gopay.com/en/s/uR).
+
+> Request
+
+<%= partial "includes/examples", :locals => { :example => data.example.recurrence_void.request } %>
+
+<h5>Request</h5>
+
+```POST /api/payments/payment/{id}/void-recurrence```
+
+<h5>Header of request</h5>
+
+Parameter's name|Parameter's description| Required|
+----------------|-----------------|--------
+Accept|application/json|YES
+Content-Type|application/x-www-form-urlencoded|YES
+Authorization|Bearer [```<access-token>```](#access-token)|YES
+
+> Response
+
+<%= partial "includes/examples", :locals => { :example => data.example.recurrence_void.response } %>
+
+<h5>Response</h5>
+
+Parameter's name|Parameter's description| Data's type
+---------------|---------------|-------
+id|Payment ID |long
+[result](#result)|Object describing the request status| Object

@@ -1,0 +1,41 @@
+##Refundation
+Refund of the payment is a functionality which allows recovering funds for already made payment to the customer. 
+
+Refund can be done in two ways. 
+Fully refundable payment can refunded based on the parameter ```amount``` full amount of the payment, on the other hand partially refundable payment
+is specified by the amount for refund. 
+
+You can find additional information about refundations in [help center](https://help.gopay.com/en/s/uW).
+
+> Request
+
+<%= partial "includes/examples", :locals => { :example => data.example.refund.request } %>
+
+<h5>Request</h5>
+
+```POST /api/payments/payment/{id}/refund```
+
+<h5>Header of request</h5>
+
+Parameter's name|Parameter's description| Required
+----------------|-----------------|--------
+Accept|application/json|YES
+Content-Type|application/x-www-form-urlencoded|YES
+Authorization|Bearer [```<access-token>```](#access-token)|YES
+
+<h5>Body of request</h5>
+
+Parameter's name|Parameter's description| Required| Data's type
+---------------|---------------|-------|-------
+amount|Refunded amount in cents|YES|long > 0
+
+> Response
+
+<%= partial "includes/examples", :locals => { :example => data.example.refund.response } %>
+
+<h5>Response</h5>
+
+Parameter's name|Parameter's description| Data's type
+---------------|---------------|-------
+id|Payment ID|long
+[result](#result)|Status of request| Object

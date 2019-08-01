@@ -1,0 +1,60 @@
+### Opakování na vyžádání
+
+Pomocí požadavku je možné opakovat platbu na základě dříve založené opakované platby v
+režimu ```ON_DEMAND``` (na vyžádání). Opakováním v tomto režimu je založena následná platba v libovolné částce. O provedení
+platby je prodejní místo informováno formou notifikace o změně stavu platby.
+   
+Podrobné informace k provádění opakovaných plateb naleznete v našem [centru nápovědy](https://help.gopay.com/cs/s/hT).
+
+<b>EET</b>
+
+Pro potřeby [EET](#evidence-trzeb-eet) je požadavek založení platby rozšířený o objekt [eet](#eet).
+
+> Request
+
+<%= partial "includes/examples", :locals => { :example => data.example.recurrence_ondemand.request } %>
+
+<h5>Request</h5>
+
+```POST /api/payments/payment/{id}/create-recurrence```
+
+<h5>Hlavička požadavku</h5>
+
+Název parametru | Popis parametru | Povinný
+----------------|-----------------|--------
+Accept|application/json|ANO
+Content-Type|application/json|ANO
+Authorization|Bearer [```<access-token>```](#pristupovy-token)|ANO
+
+<h5>Tělo požadavku</h5>
+
+Název parametru|Popis parametru|Povinný|Datový typ
+---------------|---------------|-------|-------
+amount|Částka|ANO|long > 0
+[currency](#currency)|Určuje měnu platby, formát měny odpovídá [ISO 4217](http://www.iso.org/iso/home/standards/currency_codes.htm)|ANO| string
+order_number|Identifikace objednávky v rámci prodejního místa|ANO|string, pouze alfanumerické znaky (128 znaků)
+order_description|Popis objednávky|NE|string, pouze alfanumerické znaky (256 znaků)
+[items](#items)|Detailně rozepsané jednotlivé položky objednávky|ANO|Objekt
+[eet](#eet)|EET údaje (povinné pro funkci [EET](#evidence-trzeb-eet))|NE|Objekt
+[additional_params](#additional-params)|Doplňkové parametry platby|NE|Objekt
+
+> Response
+
+<%= partial "includes/examples", :locals => { :example => data.example.recurrence_ondemand.response } %>
+
+<h5>Response</h5>
+  
+Název parametru|Popis parametru|Datový typ
+---------------|---------------|-------
+id|ID platby|long
+parent_id|ID zakládající platby|long
+order_number|ID objednávky|string, pouze alfanumerické znaky (128 znaků)
+[state](#stavy-plateb)|Stav platby|Objekt
+amount|Částka v haléřích|long > 0
+[currency](#currency)|Určuje měnu platby, formát měny odpovídá [ISO 4217](http://www.iso.org/iso/home/standards/currency_codes.htm)|string, nabývající hodnot viz [currency](#currency)
+[payment_instrument](#payment-instrument)| Kód zvolené platební metody | string, nabývající hodnot viz [payment_instrument](#payment-instrument)
+[payer](#payer)| Objekt popisující plátce platby|Objekt
+[target](#target)| Objekt popisující příjemce platby|Objekt
+[additional_params](#additional-params)| Volitelné parametry platby|Pole objektů
+[lang](#lang)|Jazyk platby|string, nabývající hodnot viz [lang](#lang)
+gw_url|URL pro inicializaci platební brány|string

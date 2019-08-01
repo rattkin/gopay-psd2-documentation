@@ -1,0 +1,15 @@
+
+request:
+    shell: |
+        curl -v -N https://gw.sandbox.gopay.com/api/accounts/account-statement \
+        -X "POST" \
+        -H "Accept: application/json" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer kRwD4pd8I+YYK0SOb7g+khEfxZmc8m/fX91zbsv2Pc/h3LjqeAN7lHe9R2qnw2YcurQNAXi0KCRJlME71OR1sm1YgVMSRf71ty5ASpU05+U=" \
+        -d '{
+        "date_from":"2016-07-08",
+        "date_to":"2016-08-08",
+        "goid":"8123456789",
+        "currency":"CZK",
+        "format":"CSV_A"
+        }'

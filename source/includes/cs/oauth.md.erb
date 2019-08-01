@@ -1,0 +1,53 @@
+# Autentizace
+
+GoPay REST API používá pro autorizaci přístupu k API principu [OAuth2.0](http://tools.ietf.org/html/rfc6749), 
+konkrétně metodu klientské autentizace viz [http://tools.ietf.org/html/rfc6749#section-4.4](http://tools.ietf.org/html/rfc6749#section-4.4)
+
+## Přístupový token
+
+Základním prvkem veškeré komunikace přes REST API je přístupový token, který je vytvořen na základě předávaných přístupových údajů ve formě ```<ClientID>```:```<ClientSecret>```.
+ Token je předáván jako autorizační parametr v hlavičce HTTP dotazu prostřednictvím ```Authorization: Bearer <Access-Token>```. Získaný přístupový token je předáván pro každý další požadavek na API.   
+ Životnost tokenu je vždy omezena na 30 minut. Po jeho vypršení je nutné vytvořit nový přístupový token.
+<aside class="notice">
+  Pokud ještě nemáte ClientID a ClientSecret, postupujte dle <a href="https://help.gopay.com/cs/s/dy" target="_blank"><font color="black">návodu</font></a>.
+</aside>
+
+<h5>Request</h5>
+
+```POST /api/oauth2/token```
+
+> Request
+
+<%= partial "includes/examples", :locals => { :example => data.example.oauth.request } %>
+
+<h5>Hlavička požadavku</h5>
+Název parametru|Popis parametru|Povinný
+---------------|---------------|-------
+Accept|application/json|ANO
+Content-Type|application/x-www-form-urlencoded|ANO
+Authorization|HTTP autorizace pomocí níž předáváte ```<ClientID>```:```<ClientSecret>```|ANO
+
+<h5>Tělo požadavku</h5>
+
+Název parametru|Popis parametru|Povinný
+---------------|---------------|-------
+[scope](#scope)|Definuje kategorii funkcionalit které může daná akce obsluhovat|ANO
+grant_type|client_credentials|ANO
+
+> Response
+
+<%= partial "includes/examples", :locals => { :example => data.example.oauth.response } %>
+
+<h5>Response</h5>
+
+Název parametru|Popis parametru|Povinný
+---------------|---------------|-------
+token_type|bearer|ANO
+access_token|Přístupový token|ANO
+expires_in|Čas expirace tokenu v sekundách|ANO
+
+<aside class="notice">
+Přístupový token pro scope payment-create je určen výhradně k založení platby. Další funkcionality,
+jako např. dotaz na stav, refundace platby musí být doprovázeny tokenem, který je určen pro
+obsluhování operací s platbami (scope payment-all).
+</aside>

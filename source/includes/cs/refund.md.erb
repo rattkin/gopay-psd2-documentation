@@ -1,0 +1,41 @@
+## Refundace platby
+Refundace platby umožňuje navrácení finančních prostředků za již
+provedenou platbu zpět zákazníkovi.
+
+Refundace lze provádět dvěma způsoby. Plná refundace platby umožňuje na základě parametru ```amount``` vrácení celé částky,
+zatímco částečná refundace specifikuje částku pro vrácení.
+
+Doplňující informace k refundaci plateb naleznete v našem [centru nápovědy](https://help.gopay.com/cs/s/hZ).
+
+> Request
+
+<%= partial "includes/examples", :locals => { :example => data.example.refund.request } %>
+
+<h5>Request</h5>
+
+```POST /api/payments/payment/{id}/refund```
+
+<h5>Hlavička požadavku</h5>
+
+Název parametru | Popis parametru | Povinný
+----------------|-----------------|--------
+Accept|application/json|ANO
+Content-Type|application/x-www-form-urlencoded|ANO
+Authorization|Bearer [```<access-token>```](#pristupovy-token)|ANO
+
+<h5>Tělo požadavku</h5>
+
+Název parametru|Popis parametru|Povinný| Datový typ
+---------------|---------------|-------|-------
+amount|Refundovaná částka v haléřích|ANO|long > 0
+
+> Response
+
+<%= partial "includes/examples", :locals => { :example => data.example.refund.response } %>
+
+<h5>Response</h5>
+
+Název parametru|Popis parametru|Datový typ
+---------------|---------------|-------
+id|ID platby|long
+[result](#result)|Stav požadavku| Objekt
