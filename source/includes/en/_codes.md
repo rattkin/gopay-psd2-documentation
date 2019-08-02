@@ -134,3 +134,27 @@ UNVERIFIED| Unverified profile
 PARTIALLY_VERIFIED| Partially verified profile
 VERIFIED| Verified profile
 FULLY_VERIFIED| Fully verified profile
+
+##current_state
+
+State of the merchant account
+
+Parameter's value|Parameter's description
+------------------|-----
+BUSINESS_FINISHED| Business finished
+CLOSED| Closed
+DEACTIVATED| Deactivated
+IN_PREPARE |  In prepare
+PREPARE_FINISHED | Prepare finished
+REQUESTED| Requested
+SUSPENDED| Suspended
+WORKER_ASSIGNED | Worker assigned
+
+##subject_type
+
+Subjec type
+
+Parameter's value|Parameter's description
+------------------|-----
+LEGAL_ENTITY| Legal entity
+NATURAL_PERSON| Natural person

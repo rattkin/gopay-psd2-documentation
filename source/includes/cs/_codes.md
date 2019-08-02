@@ -28,6 +28,22 @@ RON | Rumunský nový lei
 HRK | Chorvatská kuna
 BGN | Bulharský lev
 
+##current_state
+
+Stav obchdoního účtu
+
+Hodnota parametru|Popis
+------------------|-----
+BUSINESS_FINISHED| Obchodně dokončeno
+CLOSED| Zamítnuto
+DEACTIVATED| Deaktivováno
+IN_PREPARE |  V přípravě
+PREPARE_FINISHED | Příprava dokončena
+REQUESTED| Založen
+SUSPENDED| Pozastaveno
+WORKER_ASSIGNED | Přidělen obchodní správce
+
+
 ##scope
 Parametr popisující množinu získaných práv
 
@@ -131,3 +147,12 @@ UNVERIFIED| Neověřený profil
 PARTIALLY_VERIFIED| Částečně ověřený profil
 VERIFIED| Ověřený profil
 FULLY_VERIFIED| Plně ověřený profil
+
+##subject_type
+
+Typ společnosti
+
+Název parametru|Popis parametru
+------------------|-----
+LEGAL_ENTITY| Právnická osoba
+NATURAL_PERSON| Fyzická osoba
