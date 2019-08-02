@@ -1,5 +1,34 @@
 #Code lists
 
+##counterparty_type
+
+Type of counterparty
+
+Parameter's value|Parameter's description
+---------------|---------------
+BANK_ACCOUNT | Bank account
+PAYMENT_CARD | Payment card
+ACCOUNT | GoPay account (personal/merchant)
+COUPON | Coupon payment
+MOBILE_PHONE | Mobile payment
+GOPAY | GoPay fee
+
+
+##currency
+Payment currency
+
+Parameter's value|Description
+------------------|-----
+CZK | Czech crowns
+EUR | Euros
+PLN | Polish złoty
+HUF | Hungarian forint
+GBP | British pound
+USD | US dollar
+RON | Romanian Leu
+HRK | Kuna
+BGN | Bulgarian Lev
+
 ##scope
 Parameter describing group of acquired rights
 
@@ -80,3 +109,28 @@ _5044|SMS has been sent. It has not been delivered yet.
 _5045|Payment received. Payment is to be credited after it has been processed in the Bitcoin system.
 _5046|A full amount of payment not made. 
 _5047|Payment made after due date.
+
+
+## state
+
+State of the account
+
+Parameter's value|Parameter's description
+---------------|---------------
+IN_VERIFICATION | In cerification process
+ACTIVATED | Activated
+RESTRICTED | Functions restricted
+SUSPENDED | Suspended
+PASSIVE	| Passive mode
+DEACTIVATED | Deactivated
+
+## verification_level
+
+Verification level of the account
+
+Parameter's value|Parameter's description
+---------------|---------------
+UNVERIFIED| Unverified profile
+PARTIALLY_VERIFIED| Partially verified profile
+VERIFIED| Verified profile
+FULLY_VERIFIED| Fully verified profile

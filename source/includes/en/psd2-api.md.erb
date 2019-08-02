@@ -1,17 +1,6 @@
-# PSD2 API
+# Account information service
 
-The GoPay PSD2 services offer to the Third Party Providers (`TPP`) read the information (account state, account statement) about the owner of electronic money account or create payments with the owner's consent to another electronic money account.
-
-GoPay PSD2 API offers 2 basic types of services:
-
-- [Account information service](#account-information-service) (AIS)
-- [Payment initiation service](#paymen-tinitiation-service) (PIS)
-
-## AIS
-
-<b>AIS (Account information service)</b>
-
-### Personal account's information
+## Personal account's information
 
 > Request
 
@@ -50,7 +39,7 @@ verification_level| Verification level
 [accounts](#accounts)| Connected electronic money accounts
 
 
-### Merchant account's information
+## Merchant account's information
 
 > Request
 
@@ -89,7 +78,7 @@ vat_registration_number| VAT registration number
 [address](#address)| Address
 [accounts](#accounts)| Connected electronic money accounts
 
-### Account movements
+## Account movements
 
 You can use GET parameters:
 
@@ -134,12 +123,9 @@ date_performed| Date (yyyy-mm-dd HH:MM:SS:MS)
 account_id| ID of electronic money account
 transaction_id| ID of the transaction
 
-## PIS
+# Payment initiation service
 
-<b>PIS (Payment initiation service)</b>
-
-
-### Create of payment
+## Create of payment
 
 The function will create a payment with the owner's consent to another electronic money account. The payment need to be [confirmed](#confirmation-of-the-payment) then.
 
@@ -189,7 +175,7 @@ amount|Amount in cents
 [target](#target)| Object describing the target of the payment (payee)
 
 
-### Confirmation of the payment
+## Confirmation of the payment
 
 The confirmation of the [created payment](#create-of-payment) can results in following states: 
 

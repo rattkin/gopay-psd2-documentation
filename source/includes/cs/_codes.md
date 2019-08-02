@@ -1,5 +1,33 @@
 #Číselníky
 
+##counterparty_type
+
+Typ protistrany
+
+Název parametru|Popis parametru
+---------------|---------------
+BANK_ACCOUNT | Bankovní účet
+PAYMENT_CARD | Platební karta
+ACCOUNT | GoPay účet (osobní/obchodní)
+COUPON | Kupónová platba
+MOBILE_PHONE | Mobilní platba
+GOPAY | GoPay poplatek
+
+##currency
+Měna platby
+
+Hodnota parametru|Popis
+------------------|-----
+CZK | České koruny
+EUR | Eura
+PLN | Polský złoty
+HUF | Maďarský forint
+GBP | Britská libra
+USD | Americký dolar
+RON | Rumunský nový lei
+HRK | Chorvatská kuna
+BGN | Bulharský lev
+
 ##scope
 Parametr popisující množinu získaných práv
 
@@ -79,3 +107,27 @@ _5044|SMS byla odeslána. Zatím se ji nepodařilo doručit.
 _5045|Platba byla přijata. Platba bude připsána po zpracování v síti Bitcoin.
 _5046|Platba nebyla uhrazena v plné výši.
 _5047|Platba byla provedena po splatnosti.
+
+## state
+
+Stav účtu
+
+Název parametru|Popis parametru
+---------------|---------------
+IN_VERIFICATION | V procesu aktivace
+ACTIVATED | Aktivován
+RESTRICTED | Funkce účtu omezeny
+SUSPENDED | Pozastaven
+PASSIVE	| Pasivní mód
+DEACTIVATED | Deaktivován
+
+## verification_level
+
+Úroveň ověření profilu
+
+Název parametru|Popis parametru
+---------------|---------------
+UNVERIFIED| Neověřený profil
+PARTIALLY_VERIFIED| Částečně ověřený profil
+VERIFIED| Ověřený profil
+FULLY_VERIFIED| Plně ověřený profil

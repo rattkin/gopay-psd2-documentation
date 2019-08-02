@@ -8,11 +8,10 @@ toc_footers:
 search: true
 ---
 
-# Documentation
+# GoPay PSD2 API
 
 <%= partial "includes/languages" %>    
 
-<b>GoPay PSD2 API</b>
 
 The implementation uses communication via REST API.
 
@@ -21,3 +20,15 @@ The implementation uses communication via REST API.
 `Production enviroment` is located at ```https://gate.gopay.cz/api```. 
   
 All comunication with API is encoded in UTF-8.  
+
+
+## How it works?
+
+PSD2 is a [directive](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32015L2366) that covers payment services in European Union.
+
+The GoPay PSD2 services offer to the Third Party Providers (`TPP`) read the information (account state, account statement) about the owner of electronic money account or create payments with the owner's consent to another electronic money account.
+
+GoPay PSD2 API offers 2 types of services:
+
+- [Account information service](#account-information-service) (AIS)
+- [Payment initiation service](#paymen-initiation-service) (PIS)

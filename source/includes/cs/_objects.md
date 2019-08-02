@@ -89,6 +89,22 @@ street|Ulice zákazníka|string, 128 znaků
 postal_code|Poštovní směrovací číslo zákazníka|string, 16 znaků
 country_code|Kód státu zákazníka| string [ISO 3166-1 alpha-3](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)
 
+##counterparty
+
+Protistrana
+
+```json
+{
+  "type": "ACCOUNT",
+  "value": "goshop.com"
+}
+```
+
+Název parametru|Popis parametru|Datový typ
+---------------|---------------|-------
+[type](#counterparty-type)|Typ příjemce platby|string
+value| Popis příjemce platby| string
+
 ##target
 Identifikace příjemce platby
 
@@ -101,6 +117,6 @@ Identifikace příjemce platby
 
 Název parametru|Popis parametru|Datový typ
 ---------------|---------------|-------
-type|Popis příjemce platby|string, nastaveno na ACCOUNT
+type|Popis příjemce platby|string
 goid|Jedinečný identifikátor eshopu v systému platební brány|long
-email|E-mail
+email|E-mail|string
