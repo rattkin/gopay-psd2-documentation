@@ -4,15 +4,13 @@ locale: cs
 toc_footers:
   - <a href='http://www.gopay.com'>Oficiální web GoPay</a>
   - <a href='http://help.gopay.com/cs'>Centrum nápovědy</a>
-  - <a href="https://doc.gopay.cz"><img src = "../images/CSsmall.png"></a> <a href="https://doc.gopay.com"><img src = "../images/ENsmall.png"></a>
+  - <a href="https://doc.gopay.com/psd2/cs/"><img src = "../images/CSsmall.png"></a> <a href="https://doc.gopay.com/psd2/en/"><img src = "../images/ENsmall.png"></a>
 search: true
 ---
 
-# Dokumentace
+# GoPay PSD2 API
 
 <%= partial "includes/languages" %>
-
-<b>GoPay PSD2 API</b>
 
 Implementace využívá komunikace pomocí REST API.
 
@@ -21,4 +19,26 @@ Implementace využívá komunikace pomocí REST API.
 `Provozní API` se nachází na adrese ```https://gate.gopay.cz/api```. 
   
 Pro veškerou příchozí i odchozí komunikaci s API je použito kódování UTF-8.  
-  
+
+
+## Princip fungování
+
+PSD2 je [směrnice](https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX%3A32015L2366), která se obecně zabývá platebními službami v prostoru Evropské unie. 
+
+PSD2 služby nabízené platebním systémem GoPay umožňují aplikacím třetích stran (tzv. `Third Party Provider` - `TPP`) číst informace (stav účtu, výpis pohybů) o držiteli účtu elektronických peněz (EP) nebo zakládat platbu jeho jménem ve prospěch jiného účtu EP.
+
+GoPay PSD2 API nabízí 2 typy služeb:
+
+- [Služby informování o účtu](#sluzby-informovani-o-uctu) (Account information service - AIS)
+- [Služby iniciování platby](#sluzby-iniciovani-platby) (Payment initiation service - PIS)
+
+Možnost využít `AIS` a `PIS` služby mají `TPP` (bankovní i nebankovní instituce), kteří získali od [ČNB](https://www.cnb.cz/) licenci k využívání těchto služeb. 
+
+TPP je v rámci GoPay evidován jako samostatná entita, která má přiřazenou aplikaci pro přístup k REST API.
+
+<b>Souhlas</b>
+
+Aby mohla aplikace třetí strany (`TPP`) přistupovat ke službám `AIS` a `PIS`, je nutné získat souhlas (`consent`) držitele účtu EP k jednotlivým službám.
+
+Souhlas je udělován v rámci prostředí elektronické peněženky (osobní účet), případně v prostředí obchodního účtu, kde zákazník/držitel v sekci <i>Nastavení -> TPP</i> vybírá konkrétního TPP, kterému chce udělit souhlas. Dále vybírá typ služby (AIS, PIS) a potvrzuje souhlas s jejich užíváním. Držitel EP přenáší údaj `GoID` do nastavení služby na straně TPP, jelikož je povinný v API voláních.
+Souhlas je možné kdykoliv zrušit, či opětovně udělit.

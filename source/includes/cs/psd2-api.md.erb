@@ -1,36 +1,12 @@
-# PSD2 API
+# Služby informování o účtu
 
-PSD2 služby nabízené platebním systémem GoPay umožňují aplikacím třetích stran (`TPP` - Third Party Provider) číst informace (stav účtu, výpis pohybů) o držiteli účtu EP (elektronických peněz) nebo zakládat platbu jeho jménem ve prospěch jiného účtu EP.
-
-GoPay PSD2 API nabízí 2 základní typy služeb:
-
-- [AIS](#ais) (Account information service)
-- [PIS](#pis) (Payment initiation service)
-
-<b>Princip fungování</b>
-
-Možnost využít `AIS` a `PIS` služby mají `TPP`, kteří získali od [ČNB](https://www.cnb.cz/) licenci k využívání těchto služeb. Ve většině případů jsou TPP banky, které mají přístup jak k AIS, tak i PIS službě. Nicméně je možné, že některé TPP subjekty mohou mít přístup pouze k AIS.
-TPP je v rámci GoPay evidován jako samostatná entita, která má přiřazenou aplikaci pro přístup k REST API.
-Založení entity je blíže popsáno v pokynech pro zakládání TPP, kde je definován schvalovací proces.
-
-<b>Souhlas</b>
-
-Aby mohla aplikace třetí strany (`TPP`) přistupovat ke službám `AIS` a `PIS`, je nutné získat souhlas (`consent`) držitele účtu EP k jednotlivým službám.
-
-Souhlas je udělován v rámci prostředí elektronické peněženky, případně GoPay obchodního účtu, kde zákazník/držitel v sekci <i>Nastavení -> TPP</i> vybírá konkrétního TPP, kterému chce udělit souhlas. Dále vybírá typ služby (AIS, PIS) a potvrzuje souhlas s jejich užíváním. Držitel EP přenáší údaj `GoID` do nastavení služby na straně TPP, jelikož je povinný v API voláních.
-Souhlas je možné kdykoliv zrušit, či opětovně udělit.
-
-## AIS
-
-<b>AIS (Account information service)</b>
-
-V případě, že `TPP` získal souhlas držitele účtu pro účel <b>AIS</b>, potom GoPay zpřístupňuje TPP následující služby:
+V případě, že `TPP` získal souhlas držitele účtu pro účel <b>Služeb informování o účtu (AIS)</b>, potom GoPay zpřístupňuje TPP následující služby:
 
 - informace o držiteli EP (osobní účet / obchodní účet)
 - zůstatek na účtu EP
 - přehled pohybů na účtu EP
 
-### Informace o osobním účtu
+## Informace o osobním účtu
 
 Tímto API voláním získá TPP základní informace o držiteli EP typu peněženka (osobní účet). Zároveň získává výčet účtů EP, které držitel vlastní.
 Identifikátory účtů EP jsou vstupní parametry pro službu [Přehled pohybů na účtu](#prehled-pohybu-na-uctu).
@@ -72,7 +48,7 @@ verification_level| Úroveň ověření účtu
 [accounts](#accounts)| Připojené účty elektronických peněz
 
 
-### Informace o obchodním účtu
+## Informace o obchodním účtu
 
 Tímto API voláním získá TPP základní informace o držiteli EP typu obchodník (obchodní účet). Zároveň získává výčet účtů EP, které držitel vlastní.
 Identifikátory účtů EP jsou vstupní parametry pro službu [Přehled pohybů na účtu](#prehled-pohybu-na-uctu).
@@ -114,7 +90,7 @@ vat_registration_number| DIČ
 [address](#address)| Adresa/sídlo
 [accounts](#accounts)| Připojené účty elektronických peněz
 
-### Přehled pohybů na účtu
+## Přehled pohybů na účtu
 
 API voláním zpřístupňuje TPP přehled pohybů na účtu držitele EP.
 
@@ -161,16 +137,14 @@ date_performed| Datum provedení (yyyy-mm-dd HH:MM:SS:MS)
 account_id| ID účtu elektronických peněz
 transaction_id| ID transakce
 
-## PIS
+# Služby iniciování platby
 
-<b>PIS (Payment initiation service)</b>
-
-V případě že `TPP` získal souhlas držitele účtu pro účely <b>PIS</b>, potom GoPay zpřístupňuje TPP následující služby:
+V případě že `TPP` získal souhlas držitele účtu pro účely <b>Služeb iniciování platby (PIS)</b>, potom GoPay zpřístupňuje TPP následující služby:
 
 - založení platby jménem držitele účtu
 - dotaz na stav platby
 
-### Založení platby
+## Založení platby
 
 Funkce založí platbu jménem držitele EP ve prospěch jiného účtu EP. Platbu je nutné následně [potvrdit](#potvrzeni-platby). 
 
@@ -220,7 +194,7 @@ amount|Částka v haléřích
 [target](#target)| Objekt popisující příjemce platby
 
 
-### Potvrzení platby
+## Potvrzení platby
 
 Potvrzení [platby](#zalozeni-platby) může skončit několika stavy:
 
