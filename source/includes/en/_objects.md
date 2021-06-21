@@ -56,14 +56,14 @@ Parameter name|Description| Type
 [default_payment_instrument](#payment-instrument)|Preferred payment method|string, can gain values of [payment_instrument](#payment-instrument)
 [default_swift](#swift)|Preferred bank if default_payment_instrument is set to BANK_ACCOUNT, set by SWIFT code|string, can gain values of [SWIFT](#swift)
 [allowed_swifts](#swift)|Array of allowed bank codes| string, can gain values of [SWIFT](#swift)
-[bank_account](#bank-account)|Bank account´s information|Object
-[payment_card](#payment-card)|Payment card´s information|Object
-[contact](#contact)|Customer´s data|Object
+[bank_account](#bank-account)|Bank account information|Object
+[payment_card](#payment-card)|Payment card information|Object
+[contact](#contact)|Customer data|Object
 verify_pin|PIN for [identification payment](#identification-payment) purposes|String, 4 digits
 allowed_card_token|Token for [identification payment](#identification-payment) purposes|String
 
 ##contact
-Customer´s information
+Customer information
 
 ```json
 {
