@@ -4,7 +4,7 @@
 
 Type of counterparty
 
-Parameter's value|Parameter's description
+Parameter value|Description
 ---------------|---------------
 BANK_ACCOUNT | Bank account
 PAYMENT_CARD | Payment card
@@ -17,7 +17,7 @@ GOPAY | GoPay fee
 ##currency
 Payment currency
 
-Parameter's value|Description
+Parameter value|Description
 ------------------|-----
 CZK | Czech crowns
 EUR | Euros
@@ -32,7 +32,7 @@ BGN | Bulgarian Lev
 ##scope
 Parameter describing group of acquired rights
 
-Parameter's value|Description
+Parameter value|Description
 -------|-----
 payment-create|Allows only the establishment of payments
 payment-all|Allows all operations
@@ -41,7 +41,7 @@ account-info| Allows to get account information (for [PSD2 AIS](#ais) purposes o
 ##result
 Result of operation
 
-Parameter's name|Parameter's description
+Parameter name|Description
 ---------------|---------------
 ACCEPTED| Request accepted 
 FINISHED| Operation finished
@@ -50,7 +50,7 @@ FAILED| Operation failed
 ##Payment status 
 Payment can gain values following status
 
-Parameter's name|Parameter's description
+Parameter name|Description
 -----------|---------------------
 CREATED|Payment created 
 PAYMENT_METHOD_CHOSEN|Payment method chosen
@@ -64,7 +64,7 @@ PARTIALLY_REFUNDED|Payment partially refunded
 ##Payment substate
 Payment can gain values following substates
 
-Parameter's value|Parameter's description
+Parameter value|Description
 -----------|---------------------
 _101|Payment pending. We are waiting for the online payment to be made.
 _102|Payment pending. We are waiting for the offline payment to be made.
@@ -115,7 +115,7 @@ _5047|Payment made after due date.
 
 State of the account
 
-Parameter's value|Parameter's description
+Parameter value|Description
 ---------------|---------------
 IN_VERIFICATION | In cerification process
 ACTIVATED | Activated
@@ -128,7 +128,7 @@ DEACTIVATED | Deactivated
 
 Verification level of the account
 
-Parameter's value|Parameter's description
+Parameter value|Description
 ---------------|---------------
 UNVERIFIED| Unverified profile
 PARTIALLY_VERIFIED| Partially verified profile
@@ -139,7 +139,7 @@ FULLY_VERIFIED| Fully verified profile
 
 State of the merchant account
 
-Parameter's value|Parameter's description
+Parameter value|Description
 ------------------|-----
 BUSINESS_FINISHED| Business finished
 CLOSED| Closed
@@ -154,7 +154,7 @@ WORKER_ASSIGNED | Worker assigned
 
 Subjec type
 
-Parameter's value|Parameter's description
+Parameter value|Description
 ------------------|-----
 LEGAL_ENTITY| Legal entity
 NATURAL_PERSON| Natural person

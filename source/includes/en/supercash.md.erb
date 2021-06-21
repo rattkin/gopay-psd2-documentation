@@ -19,7 +19,7 @@ Default parameters of coupons are specified in "[defaults](#defaults)" object sp
 
 <h5>Header of request</h5>
 
-Parameter's name | Parameter's description | Required
+Parameter name | Description | Required
 ----------------|-----------------|--------
 Accept|application/json|YES
 Content-Type|application/json|YES
@@ -27,7 +27,7 @@ Authorization| Bearer [```<access-token>```](#access-token)|YES
 
 <h5>Body of request</h5>
 
-Parameter's name| Parameter's description | Required | Data's type
+Parameter name| Description | Required | Type
 ----------------|-----------------|---------|-----------
 go_id|Unique identifier of an e-shop in the payment gateway system|YES|long
 batch_completed_notification_url|URL address for sending asynchronous notification in the case of changes in the batch status (with protocol)|YES|string
@@ -40,7 +40,7 @@ batch_completed_notification_url|URL address for sending asynchronous notificati
                 
 <h5>Response</h5> 
   
-Parameter's name|Parameter's description| Data's type
+Parameter name|Description| Type
 ---------------|---------------|-----------
 batch_request_id|Coupons batch's ID|long
 
@@ -59,7 +59,7 @@ The function will create a single superCASH coupon. When the creation is complet
 
 <h5>Header of request</h5>
 
-Parameter's name | Parameter's description | Required
+Parameter name | Description | Required
 ----------------|-----------------|--------
 Accept|application/json|YES
 Content-Type|application/json|YES
@@ -67,7 +67,7 @@ Authorization| Bearer [```<access-token>```](#access-token)|YES
 
 <h5>Body of request</h5>
 
-Parameter's name| Parameter's description | Required | Data's type
+Parameter name| Description | Required | Type
 ----------------|-----------------|---------|-----------
 go_id|Unique identifier of an e-shop in the payment gateway system|YES|long
 [sub_type](#sub-type)|Type of superCASH coupon|YES|Can gain values of [sub_type](#sub-type)
@@ -86,7 +86,7 @@ notification_url|URL address for sending asynchronous notification in the case o
                 
 <h5>Response</h5> 
   
-Parameter's name|Parameter's description| Data's type
+Parameter name|Description| Type
 ---------------|---------------|-----------
 supercash_coupon_id|superCASH coupon's ID|string
 custom_id|Custom ID for coupon|string
@@ -113,7 +113,7 @@ The funcionality returns the status of superCASH batch's creation.
 
 <h5>Header of request</h5>
 
-Parameter's name | Parameter's description | Required
+Parameter name | Description | Required
 ----------------|-----------------|--------
 Accept|application/json|YES
 Content-Type|application/x-www-form-urlencoded|YES
@@ -125,7 +125,7 @@ Authorization| Bearer [```<access-token>```](#access-token)|YES
                 
 <h5>Response</h5> 
   
-Parameter's name|Parameter's description| Data's type
+Parameter name|Description| Type
 ---------------|---------------|-----------
 [state](#state-of-supercash-batch)|Status of the batch|string,can gain values [state](#state-of-supercash-batch)
 batch_completed|Batch completed|boolean
@@ -169,7 +169,7 @@ The function returns details of superCASH coupons for the payment. The ID of pay
 
 <h5>Header of request</h5>
 
-Parameter's name | Parameter's description | Required
+Parameter name | Description | Required
 ----------------|-----------------|--------
 Accept|application/json|YES
 Content-Type|application/x-www-form-urlencoded|YES
@@ -181,7 +181,7 @@ Authorization| Bearer [```<access-token>```](#access-token)|YES
                 
 <h5>Response</h5> 
   
-Parameter's name|Parameter's description| Data's type
+Parameter name|Description| Type
 ---------------|---------------|-----------
 supercash_coupon_id|superCASH coupon's ID|string
 custom_id|Custom ID for coupon|string

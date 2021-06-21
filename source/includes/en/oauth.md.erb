@@ -19,7 +19,7 @@ Token expires after 30 minutes. After expiry of the token, it is necessary to cr
 <%= partial "includes/examples", :locals => { :example => data.example.oauth.request } %>
 
 <h5>Header of the request</h5>
-Parameter's name|Parameter's description|Required
+Parameter name|Description|Required
 ---------------|---------------|-------
 Accept|application/json|YES
 Content-Type|application/x-www-form-urlencoded|YES
@@ -27,7 +27,7 @@ Authorization|HTTP authorization which is set as ```<ClientID>```:```<ClientSecr
 
 <h5>Body of the request</h5>
 
-Parameter's name|Parameter's description|Required
+Parameter name|Description|Required
 ---------------|---------------|-------
 [scope](#scope)|Defines a category of functionalities that can operate a given action|YES
 grant_type|client_credentials|YES
@@ -39,7 +39,7 @@ grant_type|client_credentials|YES
 
 <h5>Response</h5>
 
-Parameter's name|Parameter's description|Required
+Parameter name|Description|Required
 ---------------|---------------|-------
 token_type|bearer|YES
 access_token|Access token|YES

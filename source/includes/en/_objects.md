@@ -29,7 +29,7 @@ Address
   "country": "cz"
 }
 ```
-Parameter´s name|Parameter´s description| Data´s type
+Parameter name|Description| Type
 ---------------|---------------|----------
 street| Street | string
 postal_code| Postal code | string
@@ -50,7 +50,7 @@ Definition of the payer or the payment
  }
 ```
 
-Parameter´s name|Parameter´s description| Data´s type
+Parameter name|Description| Type
 ---------------|---------------|----------
 [allowed_payment_instruments](#payment-instrument)|Array of allowed payment methods|string, can gain values of [payment_instrument](#payment-instrument)
 [default_payment_instrument](#payment-instrument)|Preferred payment method|string, can gain values of [payment_instrument](#payment-instrument)
@@ -78,7 +78,7 @@ Customer´s information
 }
 ```
 
-Parameter´s name|Parameter´s description| Data´s type
+Parameter name|Description| Type
 ---------------|---------------|-------
 first_name|First name|string, 256 characters
 last_name|Last name|string, 256 characters
@@ -101,7 +101,7 @@ Type of counterparty
 }
 ```
 
-Parameter´s name|Parameter´s description|Data's type
+Parameter name|Description|Type
 ---------------|---------------|-------
 [type](#counterparty-type)|Type of counterparty|string
 value|Counterparty'S description| string
@@ -116,7 +116,7 @@ Identification of the payee
 }
 ```
 
-Parameter´s name|Parameter´s description| Data´s type
+Parameter name|Description| Type
 ---------------|---------------|-------
 type|Description of payee|string
 goid|Unique identifier of an e-shop in the payment gateway system|long
