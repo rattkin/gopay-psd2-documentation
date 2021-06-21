@@ -12,7 +12,7 @@ Information about electronic money account
 }
 ```
 
-Název parametru|Popis parametru|Datový typ
+Parameter name|Description| Type
 ---------------|---------------|----------
 id| ID of account
 balance| Balance of account
